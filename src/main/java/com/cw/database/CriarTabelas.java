@@ -143,23 +143,23 @@ public class CriarTabelas {
                 CONSTRAINT fk_sessao_ocorrencia FOREIGN KEY (fk_sessao) REFERENCES sessao(id_sessao)
             );
                         
-            CREATE TABLE registro (
-                id_registro INT PRIMARY KEY AUTO_INCREMENT,
-                dt_hora DATETIME DEFAULT CURRENT_TIMESTAMP,
-                uso_cpu DECIMAL(4, 1),
-                uso_ram BIGINT,
-                disponivel_ram BIGINT,
-                fk_sessao INT,
-                CONSTRAINT fk_sessao_registro FOREIGN KEY (fk_sessao) REFERENCES sessao(id_sessao)
+                  CREATE TABLE registro (
+                      id_registro INT PRIMARY KEY AUTO_INCREMENT,
+                      dt_hora datetime,
+                      uso_cpu DECIMAL(4, 1),
+                      uso_ram BIGINT,
+                      disponivel_ram BIGINT
+                  );
+                  
+            
+              CREATE TABLE volume (
+              uuid CHAR(36) PRIMARY KEY,
+              fk_maquina INT,
+              nome VARCHAR(45),
+              ponto_montagem VARCHAR(45),
+              CONSTRAINT fk_maquina_volume FOREIGN KEY (fk_maquina) REFERENCES maquina(id_maquina)
             );
                         
-            CREATE TABLE volume (
-                uuid CHAR(36) PRIMARY KEY,
-                fk_maquina INT,
-                nome VARCHAR(45),
-                ponto_montagem VARCHAR(45),
-                CONSTRAINT fk_maquina_volume FOREIGN KEY (fk_maquina) REFERENCES maquina(id_maquina)
-            );
                         
             CREATE TABLE registro_volume (
                 id_registro_volume INT PRIMARY KEY AUTO_INCREMENT,

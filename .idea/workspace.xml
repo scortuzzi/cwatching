@@ -10,8 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="724465b6-f04b-4087-8885-ea8306413a9d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cw/MainCW.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cw/MainCW.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cw/conexao/Conexao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cw/conexao/Conexao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/cw/database/CriarTabelas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cw/database/CriarTabelas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/cw/database/PopularTabelas.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cw/database/PopularTabelas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cw/services/AtualizarRegistro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cw/services/AtualizarRegistro.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -21,7 +21,7 @@ public class Conexao {
         */
         dataSource.setUrl("jdbc:mysql://localhost:3306/cwdb");
         dataSource.setUsername("root");
-        dataSource.setPassword("root");
+        dataSource.setPassword("4#d20+15+1d6");
 
         conexaoDoBanco = new JdbcTemplate(dataSource);
     }

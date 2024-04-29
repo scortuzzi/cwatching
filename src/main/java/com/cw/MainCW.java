@@ -97,8 +97,8 @@ public class MainCW {
                 atualizarRegistro.schedule(new AtualizarRegistro(sessaoAtual, alerta), 0, parametroAlertaAtual.getIntervaloRegistroMs());
 
                 // Inicializa timer para coleta de dados de volumes
-                Timer atualizarVolume = new Timer();
-                atualizarVolume.schedule(new AtualizarRegistroVolume(alerta), 0, parametroAlertaAtual.getIntervaloVolumeMs());
+//                Timer atualizarVolume = new Timer();
+//                atualizarVolume.schedule(new AtualizarRegistroVolume(alerta), 0, parametroAlertaAtual.getIntervaloVolumeMs());
 
                 // Inicializa o monitoramento de ociosidade de mouse do usuário
                 OciosidadeMouse ociosidadeMouse = new OciosidadeMouse(usuario);

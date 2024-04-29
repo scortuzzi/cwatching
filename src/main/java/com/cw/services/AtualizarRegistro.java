@@ -2,18 +2,17 @@ package com.cw.services;
 
 import com.cw.dao.ProcessoDAO;
 import com.cw.dao.RegistroDAO;
-import com.cw.models.ParametroAlerta;
-import com.cw.models.Processo;
-import com.cw.models.Registro;
-import com.cw.models.Sessao;
+import com.cw.dao.RegistroJpaDAO;
+import com.cw.database.JPAUtil;
+import com.cw.models.*;
 import com.github.britooo.looca.api.core.Looca;
 import oshi.SystemInfo;
 import oshi.software.os.OSProcess;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
+import javax.persistence.EntityManager;
+import javax.swing.text.html.parser.Entity;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class AtualizarRegistro extends TimerTask {
     private Sessao sessao;
@@ -21,8 +20,6 @@ public class AtualizarRegistro extends TimerTask {
 
     private Looca looca = new Looca();
     private SystemInfo oshi = new SystemInfo();
-
-    private RegistroDAO registroDAO = new RegistroDAO();
     private ProcessoDAO processoDAO = new ProcessoDAO();
 
     private Boolean registrarProcessos = true;
@@ -33,22 +30,37 @@ public class AtualizarRegistro extends TimerTask {
     }
 
     public void run() {
+
+        Date date = new Date();
+
+        String padrao = "yyyy-MM-dd HH:mm:ss";
+        SimpleDateFormat formatador = new SimpleDateFormat(padrao);
+
+        String padraoSql = formatador.format(date);
+
+
         try {
-            Registro registro = new Registro(
+
+             EntityManager em = JPAUtil.getEntityManager();
+
+             RegistroJpaDAO registroJpaDAO = new RegistroJpaDAO(em);
+
+
+
+            RegistroJpa registro = new RegistroJpa(
+                    padraoSql,
                     looca.getProcessador().getUso()*10,
                     looca.getMemoria().getEmUso(),
-                    looca.getMemoria().getDisponivel(),
-                    sessao.getIdSessao());
+                    looca.getMemoria().getDisponivel()
+            );
 
-            registroDAO.inserirRegistro(registro);
+            em.getTransaction().begin();
 
-            Registro r = registroDAO.buscarUltimoRegistroPorSessao(sessao);
+            registroJpaDAO.registrar(registro);
 
-            String[] alertas = alerta.verificarAlerta(r);
+            em.getTransaction().commit();
+            em.close();
 
-            if (!(alertas[0].isEmpty() && alertas[1].isEmpty())) registrarProcessos(r);
-
-            exibirUltimoRegistro(r, alertas);
         } catch (Exception e) {
             System.out.println(e);
         }
